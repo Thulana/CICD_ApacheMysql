@@ -1,0 +1,30 @@
+language: php
+
+install:
+  - composer install
+  - docker build -t $imagename .
+  - docker run -d --name $containername $imagename
+   
+script:
+  - codecept run unit
+env:
+  # global will stay the same across all matrix possibilities (will not create additional combinations to run)
+  global:
+    - imagename=apacheimage
+    - containername=apachemysql
+
+notifications: # set notification options
+  email:
+    recipients:
+      - one@example.com
+      - other@example.com
+
+    # change is when the repo status goes from pass to fail or vice versa
+    on_success: always
+    on_failure: always
+
+services:
+  - docker
+
+before_install:
+- sudo apt-get update
