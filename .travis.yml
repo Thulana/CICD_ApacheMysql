@@ -5,10 +5,10 @@ install:
   - docker run -d --name $containername $imagename
   - docker exec $containername service apache2 restart 
 script:
-  - php codecept.phar run unit
+  - php vendor/bin/codecept run unit
 
 before-script:
-  - php codecept.phar bootstrap
+  - php composer.phar require "codeception/codeception:*"
 env:
   # global will stay the same across all matrix possibilities (will not create additional combinations to run)
   global:
