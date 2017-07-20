@@ -27,6 +27,7 @@ services:
   - docker
 
 before_install:
+  - php --version
   - docker build -t $imagename .
   - sudo apt-get update
   - composer self-update
