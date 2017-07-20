@@ -25,7 +25,7 @@ class testDockerContainerCest
 		
 		$I->am('Docker Tester');
 		$I->wantTo('verify apache in the container');
-		$I->runShellCommand('docker exec '.getenv("container_name").' service mysql status');
-		$I->seeInShellOutput('is running');
+		$I->runShellCommand('docker exec '.getenv("container_name").' mysqladmin -uroot -p'.getenv("MYSQL_ROOT_PASSWORD").' status');
+		$I->seeInShellOutput('Uptime');
     }
 }
