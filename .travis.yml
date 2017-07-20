@@ -4,7 +4,7 @@ install:
   - docker run -d --name $containername $imagename
   - docker exec $containername service apache2 restart 
 script:
-  - php vendor/bin/codecept run unit
+  - php codecept.phar run unit
 
 before-script:
 env:
