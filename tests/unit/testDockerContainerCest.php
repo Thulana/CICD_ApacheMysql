@@ -17,7 +17,7 @@ class testDockerContainerCest
 		
 		$I->am('Docker Tester');
 		$I->wantTo('verify apache in the container');
-		$I->runShellCommand('docker exec '.getenv("container_name").' service apache2 status');
+		$I->runShellCommand('docker exec '.getenv("containername").' service apache2 status');
 		$I->seeInShellOutput('apache2 is running');
     }
      public function testMySQLService(UnitTester $I)
@@ -25,7 +25,7 @@ class testDockerContainerCest
 		
 		$I->am('Docker Tester');
 		$I->wantTo('verify mysql in the container');
-		$I->runShellCommand('docker exec '.getenv("container_name").' mysqladmin -uroot -padmin status');
+		$I->runShellCommand('docker exec '.getenv("containername").' mysqladmin -uroot -padmin status');
 		$I->seeInShellOutput('Uptime');
     }
 }
