@@ -1,7 +1,7 @@
 language: php
 
 install:
-  - docker build -t $imagename .
+  - composer install
   - docker run -d --name $containername $imagename
   - docker exec $containername service apache2 restart 
 script:
@@ -29,4 +29,6 @@ services:
   - docker
 
 before_install:
-- sudo apt-get update
+  - docker build -t $imagename .
+  - sudo apt-get update
+  - composer self-update
