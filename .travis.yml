@@ -1,10 +1,9 @@
 language: php
 
 install:
-  - composer install
   - docker build -t $imagename .
   - docker run -d --name $containername $imagename
-   
+  - docker exec $containername service apache2 restart 
 script:
   - codecept run unit
 env:
