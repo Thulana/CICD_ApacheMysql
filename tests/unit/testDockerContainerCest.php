@@ -25,6 +25,7 @@ class testDockerContainerCest
 		
 		$I->am('Docker Tester');
 		$I->wantTo('verify mysql in the container');
+		$I->runShellCommand("ping -c 30 localhost");
 		$I->runShellCommand('docker exec '.getenv("containername").' mysqladmin -uroot -padmin status');
 		$I->seeInShellOutput('Uptime');
     }
